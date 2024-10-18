@@ -4,6 +4,7 @@ import json
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+import random
 
 # Get the directory of the current script
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -20,12 +21,17 @@ firebase_admin.initialize_app(cred, {
 # Set up serial connection
 ser = serial.Serial('COM3', 9600)  # Replace 'COM3' with your Arduino's port if needed
 
+# List of dummy names
+dummy_names = ["Aniket"];
+
 def read_and_upload():
     while True:
         if ser.in_waiting:
             line = ser.readline().decode('utf-8').strip()
             try:
                 data = json.loads(line)
+                # Add a random name to the data
+                data['name'] = random.choice(dummy_names)
                 # Upload data to Firebase
                 ref = db.reference('sensor_data')
                 ref.push(data)

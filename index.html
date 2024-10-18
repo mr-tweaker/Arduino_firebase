@@ -1,37 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sensor Data Display</title>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Sensor Data Display</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Sensor Data</h1>
-    <div id="sensorData"></div>
+    <div class="container">
+        <h1>Arduino Sensor Data</h1>
+        <div id="latestData"></div>
+        <div id="recommendations"></div>
+        <h2>Historical Data</h2>
+        <div id="historyData"></div>
+    </div>
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            // Your Firebase config object
-        };
-        
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Get a reference to the database service
-        var database = firebase.database();
-
-        // Listen for new data
-        database.ref('sensor_data').limitToLast(1).on('child_added', function(snapshot) {
-            var data = snapshot.val();
-            var sensorDataDiv = document.getElementById('sensorData');
-            sensorDataDiv.innerHTML = `
-                <p>Heart Rate: ${data.heartRate}</p>
-                <p>Humidity: ${data.humidity}%</p>
-                <p>Temperature: ${data.temperatureC}°C / ${data.temperatureF}°F</p>
-                <p>Heat Index: ${data.heatIndexC}°C / ${data.heatIndexF}°F</p>
-            `;
-        });
-    </script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
