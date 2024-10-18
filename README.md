@@ -58,7 +58,3 @@ The web interface displays:
 - Add user authentication
 - Implement data visualization with charts
 - Extend sensor types and recommendations
-
-## License
-
-[Add your chosen license here]
