@@ -1,2 +1,0 @@
-Web API Key: AIzaSyCXPKH38aynV0p4fBpPOHjcA81CpCHQvZI
-Firebase URL: https://arduinor3sensordata-default-rtdb.asia-southeast1.firebasedatabase.app/
